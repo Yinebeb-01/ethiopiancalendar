@@ -16,10 +16,11 @@
 //
 // Usage:
 // This tool can be used in two ways:
-// 1. **Run on Your Own Server:**
+//
+// 1. Run on Your Own Server:
 //   - Deploy the server by configuring and running it locally or on a cloud provider.
 //
-// 2. **CLI Usage:**
+// 2. CLI Usage:
 //   - A command-line interface (CLI) will be added soon for easier direct usage.
 //
 // To integrate into your project, simply import the package and use the exported methods.
