@@ -1,4 +1,4 @@
-package ethioGrego
+package dateconverter
 
 func startDayOfEthiopian(year int) int {
 	//magic formula gives start of year

@@ -1,28 +1,44 @@
-package api
+package main
 
 import (
-	"errors"
-
+	"github.com/gin-gonic/gin"
+	"github.com/yinebebt/ethiocal/bahirehasab"
+	"github.com/yinebebt/ethiocal/dateconverter"
 	"net/http"
 	"strconv"
 	"strings"
 
-	"github.com/gin-gonic/gin"
-	"github.com/yinebebt/ethiopiancalendar/internal/module/ethioGrego"
+	"errors"
 )
 
-// Ethiopian : Gregorian to Ethiopian date converter
-// @Summary      Gregorian to Ethiopian
-// @Description  Get ethiopian date string from gregorian date
-// @Tags         Date-Conversion
-// @Accept       json
-// @Produce      json
-// @Param        date	path	string	true	"Date in yy-mm-dd format"  example("2024-08-12")
-// @Success      200  {object}  time.Time
-// @Failure      400  {object}  error
-// @Failure      404  {object}  error
-// @Failure      500  {object}  error
-// @Router       /ad-to-et/{date} [get]
+func BahireHasab(ctx *gin.Context) {
+	yearString, state := ctx.Params.Get("year")
+	if !state {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": "Empty year value",
+		})
+		return
+	}
+	year, err := strconv.Atoi(yearString)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": "not a valid year",
+		})
+		return
+	}
+
+	festival, err := bahirehasab.BahireHasab(year)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	ctx.JSON(http.StatusOK, gin.H{
+		"data": festival,
+	})
+}
+
 func Ethiopian(ctx *gin.Context) {
 	dateString, state := ctx.Params.Get("date")
 	if !state {
@@ -42,7 +58,7 @@ func Ethiopian(ctx *gin.Context) {
 	day, _ := strconv.Atoi(date[2])
 	month, _ := strconv.Atoi(date[1])
 	year, _ := strconv.Atoi(date[0])
-	EtDate, err := ethioGrego.Ethiopian(year, month, day)
+	EtDate, err := dateconverter.Ethiopian(year, month, day)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error(),
@@ -54,18 +70,6 @@ func Ethiopian(ctx *gin.Context) {
 	})
 }
 
-// Gregorian : Ethiopian to Gregorian date converter
-// @Summary      Ethiopian to Gregorian
-// @Description  Get gregorian date string from ethiopian date
-// @Tags         Date-Conversion
-// @Accept       json
-// @Produce      json
-// @Param        date	path	string  true  "Date in yy-mm-dd format"  example("2016-12-06")
-// @Success      200  {object}  time.Time
-// @Failure      400  {object}  error
-// @Failure      404  {object}  error
-// @Failure      500  {object}  error
-// @Router       /et-to-ad/{date} [get]
 func Gregorian(ctx *gin.Context) {
 	dateString, state := ctx.Params.Get("date")
 	if !state {
@@ -86,7 +90,7 @@ func Gregorian(ctx *gin.Context) {
 	month, _ := strconv.Atoi(date[1])
 	year, _ := strconv.Atoi(date[0])
 
-	resDate, err := ethioGrego.Gregorian(year, month, day)
+	resDate, err := dateconverter.Gregorian(year, month, day)
 	if err != nil {
 		if err.Error() == "not a valid date" {
 			ctx.JSON(http.StatusBadRequest, gin.H{

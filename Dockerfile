@@ -1,16 +1,14 @@
-FROM golang:alpine
-
+FROM golang:1.23-alpine AS builder
 WORKDIR /app
-
 COPY go.mod .
 COPY go.sum .
-
 RUN go mod download
-
 COPY . .
+RUN go build -o ethiocal .
 
-RUN go build -o ethiocal cmd/main.go
 
+FROM alpine:3.7
+WORKDIR /opt
+COPY --from=builder /app/ethiocal /opt/ethiocal/
 EXPOSE 8080
-
-CMD ["./ethiocal"]
+CMD ["./opt/ethiocal"]

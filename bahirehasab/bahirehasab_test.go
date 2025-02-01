@@ -1,6 +1,8 @@
 package bahirehasab
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestGetYear(t *testing.T) {
 	sampleYear := Year{
@@ -83,5 +85,15 @@ func TestFasting(t *testing.T) {
 	got := getFasting(2016)
 	if expected != got {
 		t.Errorf("Test failed expected %v got %v", expected, got)
+	}
+}
+
+func TestBahireHasab(t *testing.T) {
+	res, err := BahireHasab(2016)
+	if err != nil {
+		t.Errorf("Test faled, expected %v but got %v ", nil, err)
+	}
+	if res.Year.Year != 2016 {
+		t.Errorf("Test faled, expected %v but got %v ", 2016, res.Year.Year)
 	}
 }

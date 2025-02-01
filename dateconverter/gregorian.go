@@ -1,4 +1,4 @@
-package ethioGrego
+package dateconverter
 
 import (
 	"errors"

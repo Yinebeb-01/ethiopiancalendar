@@ -1,9 +1,9 @@
 <p align="center">
-<img src="internal/assets/logo_medium.png" alt="logo" width="110" height="110">
+<img src="logo.png" alt="logo" width="110" height="110">
 </p>
-<h1 align="center"><a href="https://pkg.go.dev/github.com/yinebebt/ethiopiancalendar">Ethiopian Calendar (ባሕረ-ሐሳብ)</a></h1>
+<h1 align="center"><a href="https://pkg.go.dev/github.com/yinebebt/ethiocal">Ethiopian Calendar (ባሕረ-ሐሳብ)</a></h1>
 
-![build-workflow](https://github.com/yinebebt/ethiopiancalendar/actions/workflows/build-and-test.yml/badge.svg)
+![build-workflow](https://github.com/yinebebt/ethiocal/actions/workflows/build-and-test.yml/badge.svg)
 
 ## Description
 The Ethiopian calendar(ባሕረ-ሀሳብ) is used to get Fasting and Holiday's specific date with in a year based on 
@@ -22,15 +22,10 @@ respond with the converted date in JSON format whereas for the calendar, it will
 
 #### Documentation
 
-* <p><a href="https://yinebebt.github.io/ethiopiancalendar/"  target="_blank" >Swagger-docs</a></p>
-
-* <p><a href="https://pkg.go.dev/github.com/yinebebt/ethiopiancalendar"  target="_blank" >pkg.go.dev</a></p>
+* <p><a href="https://pkg.go.dev/github.com/yinebebt/ethiocal"  target="_blank" >pkg.go.dev</a></p>
 
 ## Installation
 Install using below go command:
 ```bash
-go get github.com/yinebebt/ethiopiancalendar
+go get github.com/yinebebt/ethiocal
 ```
-
-## Author
-- [Yinebeb T.](https://github.com/yinebebt)

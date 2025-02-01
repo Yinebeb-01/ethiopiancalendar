@@ -1,14 +1,10 @@
-swag:
-	swag init -g cmd/main.go
-
 test:
 	go test -v -cover ./test/...
 
 run:
-	go run ./cmd/main.go
+	go run .
 
 build:
-	rm app
-	go build -o app ./cmd/main.go
+	go build -o ethiocal .
 
-.PHONY: swag test run build
+.PHONY: test run build
