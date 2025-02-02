@@ -131,7 +131,7 @@ func getBasic(year int) Basic {
 		}
 	} else if bealeMetq == 2 || (bealeMetq == 1 && mebajaHamer > 30) {
 		nenewie = Date{
-			DateOfTheMonth: mebajaHamer,
+			DateOfTheMonth: mebajaHamer % 30,
 			MonthOfTheYear: 6,
 		}
 	}
