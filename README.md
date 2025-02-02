@@ -3,7 +3,9 @@
 </p>
 <h1 align="center"><a href="https://pkg.go.dev/github.com/yinebebt/ethiocal">Ethiopian Calendar (ባሕረ-ሐሳብ)</a></h1>
 
-![build-workflow](https://github.com/yinebebt/ethiocal/actions/workflows/build-and-test.yml/badge.svg)
+[![Go Reference](https://pkg.go.dev/badge/github.com/yinebebt/ethiocal/v0.2.5.svg)](https://pkg.go.dev/github.com/yinebebt/ethiocal/v0.2.5)
+[![ci-badge](https://github.com/yinebebt/ethiocal/actions/workflows/ci.yml/badge.svg)](https://github.com/yinebebt/ethiocal/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/yinebebt/ethiocal)](https://goreportcard.com/report/github.com/yinebebt/ethiocal)
 
 ## Description
 The Ethiopian calendar(ባሕረ-ሀሳብ) is used to get Fasting and Holiday's specific date with in a year based on 
@@ -20,12 +22,8 @@ This API allows users to:
 To utilize the API, simply send a date or year using the specified endpoints. For the date conversion,the API will 
 respond with the converted date in JSON format whereas for the calendar, it will respond data in a json object.
 
-#### Documentation
-
-* <p><a href="https://pkg.go.dev/github.com/yinebebt/ethiocal"  target="_blank" >pkg.go.dev</a></p>
-
 ## Installation
 Install using below go command:
 ```bash
-go get github.com/yinebebt/ethiocal
+go install github.com/yinebebt/ethiocal@latest
 ```
