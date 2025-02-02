@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 	"github.com/gin-gonic/gin"
-	"github.com/yinebebt/ethiocal/v1/bahirehasab"
-	"github.com/yinebebt/ethiocal/v1/dateconverter"
+	"github.com/yinebebt/ethiocal/bahirehasab"
+	"github.com/yinebebt/ethiocal/dateconverter"
 	"log"
 	"net/http"
 	"os"

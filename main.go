@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/yinebebt/ethiocal/v1/cmd"
+	"github.com/yinebebt/ethiocal/cmd"
 )
 
 func main() {

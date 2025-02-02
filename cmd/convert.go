@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/spf13/cobra"
-	"github.com/yinebebt/ethiocal/v1/dateconverter"
+	"github.com/yinebebt/ethiocal/dateconverter"
 )
 
 var convertCmd = &cobra.Command{
