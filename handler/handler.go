@@ -1,12 +1,17 @@
-package main
+package handler
 
 import (
+	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/yinebebt/ethiocal/bahirehasab"
 	"github.com/yinebebt/ethiocal/dateconverter"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"errors"
 )
@@ -106,4 +111,39 @@ func Gregorian(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"gregorian_date": resDate.Format("2006-01-02"),
 	})
+}
+
+func Init() {
+	handler := gin.Default()
+	v0 := handler.Group("/v0")
+	{
+		v0.GET("/etog/:date", Gregorian)
+		v0.GET("/gtoe/:date", Ethiopian)
+		v0.GET("/bahir/:year", BahireHasab)
+	}
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	srv := &http.Server{
+		Addr:    ":" + port,
+		Handler: handler,
+	}
+
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("failed to start server: %v", err)
+		}
+	}()
+
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+	sig := <-sigChan
+	log.Println("shutting down gracefully, received signal:", sig)
+
+	if err := srv.Shutdown(context.Background()); err != nil {
+		log.Fatalf("server forced to shutdown: %v", err)
+	}
 }
