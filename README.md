@@ -3,7 +3,7 @@
 </p>
 <h1 align="center"><a href="https://pkg.go.dev/github.com/yinebebt/ethiocal">Ethiopian Calendar (ባሕረ-ሐሳብ)</a></h1>
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/yinebebt/ethiocal/v0.2.5.svg)](https://pkg.go.dev/github.com/yinebebt/ethiocal/v0.2.5)
+[![Go Reference](https://pkg.go.dev/badge/github.com/yinebebt/ethiocal.svg)](https://pkg.go.dev/github.com/yinebebt/ethiocal@v0.2.5)
 [![ci-badge](https://github.com/yinebebt/ethiocal/actions/workflows/ci.yml/badge.svg)](https://github.com/yinebebt/ethiocal/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/yinebebt/ethiocal)](https://goreportcard.com/report/github.com/yinebebt/ethiocal)
 
