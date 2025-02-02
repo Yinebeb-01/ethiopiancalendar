@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/yinebebt/ethiocal/handler"
+	"github.com/yinebebt/ethiocal/v1/handler"
 	"os"
 
 	"github.com/spf13/cobra"

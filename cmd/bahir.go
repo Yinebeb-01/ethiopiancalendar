@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/spf13/cobra"
-	"github.com/yinebebt/ethiocal/bahirehasab"
+	"github.com/yinebebt/ethiocal/v1/bahirehasab"
 )
 
 var bahirCmd = &cobra.Command{
